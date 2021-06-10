@@ -1,9 +1,12 @@
 import React from "react";
 
 const Navigation = () => {
-  <nav style={{display: 'flax', justifyContent: 'center'}} >
-    <p>Sign out</p>
-  </nav>;
+  return (
+
+  <nav style={{display: 'flax', justifyContent: 'flex-end '}} >
+    <p classNme='f3 link dim black underline pa3 pointer'> Sign out</p>
+  </nav>
+  )
 };
 
 export default Navigation;
