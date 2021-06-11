@@ -13,4 +13,11 @@ p {
     justify-content: center;
     
 }
-
+.input-block-2 {
+   
+    display: flex;
+    justify-content: center;
+    box-shadow: 5px 5px 5px 5px grey;;
+    background-color: transparent;
+    background-size: 100% 1.2em;
+}

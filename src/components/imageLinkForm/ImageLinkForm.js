@@ -12,9 +12,11 @@ const  ImageLinkForm = () => {
             </p>
             <div className='input-block'>
                 
-
+            <div className='input-block-2'>
             <InputForm />
             <Button style={{margin:'10px'}} variant="contained" color="primary">Detect</Button>
+
+            </div>
                 
             </div>
         </div>
