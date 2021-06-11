@@ -1,0 +1,9 @@
+nav {
+    display: flex;
+    justify-content: flex-end;
+}
+.login {
+    cursor: pointer;
+    padding: 10px;
+    margin: 10;
+}
