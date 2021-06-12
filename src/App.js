@@ -33,31 +33,30 @@ class App extends React.Component {
     this.state = {
       input:'',
       imageUrl:'',
+      box:{},
     }
   }
   
 
-  InputonChange = (event) => {
-    this.setState({
-      input: event.target.value
-    });
+  calculateFaceLocation = (data) => {
+
   }
-  ButtononSubmit = () => {
-    this.setState({
-      imageUrl: this.state.input
-    })
+
+  onInputChange = (event) => {
+    this.setState({input: event.target.value});
+  }
+
+  onButtonSubmit = () => {
+    this.setState({imageUrl: this.state.input});
     app.models.predict(
       Clarifai.FACE_DETECT_MODEL, 
-      this.state.input).then(
-      function(response) {
-        console.log(response)
-      },
-      function(err) {
-
-      }
+      this.state.input).
+      then(response => this.calculateFaceLocation(response)
+      .catch(err => console.log(err))
     );
   }
   render() {
+    const {imageUrl, box} = this.state;
     return (
       <div className="App">
          <Particles className='particles '
@@ -65,10 +64,11 @@ class App extends React.Component {
          <Navigation />
          <Logo />
          <Rank />
-         <ImageLinkForm 
-         InputonChange={this.InputonChange}
-         ButtononSubmit={this.ButtononSubmit} />
-         <FaceRecognition imageUrl={this.state.imageUrl} /> 
+         <ImageLinkForm
+                onInputChange={this.onInputChange}
+                onButtonSubmit={this.onButtonSubmit}
+              />
+              <FaceRecognition box={box} imageUrl={imageUrl} />
       </div>
     );
   }

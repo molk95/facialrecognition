@@ -4,7 +4,7 @@ import { Button } from '@material-ui/core';
 import InputForm from "./InputForm"
 
 
-const  ImageLinkForm = ({InputonChange, ButtononSubmit}) => {
+const  ImageLinkForm = ({onInputChange, onButtonSubmit }) => {
     return (
         <div className='image-block'>
             <p className="sub-title"> 
@@ -13,8 +13,8 @@ const  ImageLinkForm = ({InputonChange, ButtononSubmit}) => {
             <div className='input-block'>
                 
             <div className='input-block-2'>
-            <InputForm onChange={InputonChange} />
-            <Button onClick={ButtononSubmit} style={{margin:'10px'}} variant="contained" color="primary">Detect</Button>
+            <InputForm onChange={onInputChange} />
+            <Button onClick={onButtonSubmit} style={{margin:'10px'}} variant="contained" color="primary">Detect</Button>
 
             </div>
                 
