@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignIn() {
+export default function SignIn({onRouteChange}) {
   const classes = useStyles();
 
   return (
@@ -59,6 +59,7 @@ export default function SignIn() {
             autoComplete="current-password"
           />
           <Button
+            onClick={() => onRouteChange('home')}
             type="submit"
             fullWidth
             variant="contained"
@@ -67,7 +68,7 @@ export default function SignIn() {
           >
             Sign In
           </Button>
-          <Typography>
+          <Typography onClick={() => onRouteChange('register')} style={{cursor:'pointer'}}>
           Sign up
         </Typography>
         </form>
