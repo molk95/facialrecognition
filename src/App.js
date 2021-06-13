@@ -16,11 +16,11 @@ const app = new Clarifai.App({
 
 const particlesOptions = {
   particles: {
-    line_linked: {
-      shadow: {
+    number: {
+      value: 30,
+      density: {
         enable: true,
-        color: "#3ca9d1",
-        blur: 5
+        value_area: 800
       }
     }
   }
@@ -43,18 +43,27 @@ class App extends React.Component {
     const image = document.getElementById('inputimage');
     const width = Number(image.width);
     const height = Number(image.height);
-    console.log(width,height)
-
+    return {
+      leftCol: clarifaiFace.left_col * width,
+      topRow: clarifaiFace.top_row * height,
+      rightCol: width - (clarifaiFace.right_col * width),
+      bottomRow: height - (clarifaiFace.bottom_row * height)
+    }
   }
 
+  displayFaceBox = (box) => {
+    this.setState({box: box});
+  }
   onInputChange = (event) => {
     this.setState({input: event.target.value});
   }
 
   onButtonSubmit = () => {
     this.setState({imageUrl: this.state.input});
-    app.models.predict('c0c0ac362b03416da06ab3fa36fb58e3', this.state.input).
-      then(response => this.calculateFaceLocation(response)
+    app.models.predict(
+      Clarifai.FACE_DETECT_MODEL,
+        this.state.input).
+      then(res => this.displayFaceBox(this.calculateFaceLocation(res))
       .catch(err => console.log(err))
     );
   }
