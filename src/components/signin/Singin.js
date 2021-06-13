@@ -28,6 +28,7 @@ export default function SignIn() {
   const classes = useStyles();
 
   return (
+    <article class="br3 ba dark-gray b--black-10 mv4 w-100 w-50-m w-25-l mw6 shadow-5 center">
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
@@ -66,9 +67,13 @@ export default function SignIn() {
           >
             Sign In
           </Button>
+          <Typography>
+          Sign up
+        </Typography>
         </form>
       </div>
       
     </Container>
+    </article>
   );
 }
